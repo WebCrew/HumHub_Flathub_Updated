@@ -1,4 +1,4 @@
-# Updated Version of FlatHub V2 Theme from Alexandra Travkina - [fixel.ru](https://fixel.ru)
+# Updated FlatHub V2 Theme from Alexandra Travkina
 Edited and updated by **WebCrew** / Andreas Holzer - [crazymates.de](https://crazymates.de)
 
 I have already fixed the most important bugs, there was a lot to do. Please feel free to give me a **STAR** here on my repository. **STARS** provide incentives to continue doing something for the HumHub community. 
