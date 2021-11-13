@@ -12,7 +12,7 @@ FlatHub - bright and dark flat theme for **HumHub 1.9.0** and and higher.
 
 ![FlatHub](https://raw.githubusercontent.com/WebCrew/humhub_flathub_updated/master/screenshot/thumb_flathub.jpg)
 
-![FlatHub](https://raw.githubusercontent.com/WebCrew/humhub_flathub_updated/master/screenshot/thumb_flathub_dark.jpg)
+![FlatHub](https://raw.githubusercontent.com/WebCrew/humhub_flathub_updated/master/screenshot/06_flathub.jpg)
 
 ## Features
 - Bright flat design
