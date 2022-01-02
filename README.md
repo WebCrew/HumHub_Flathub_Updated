@@ -30,8 +30,8 @@ FlatHub - bright and dark flat theme for **HumHub 1.9.0** and and higher.
 - Activate it from HumHub admin dashboard
 
 ## Donate
-All support and all credits go to Alexandra. I don't want anything for my work, except an STAR for the repository - thank you.
-So if you want to donate a few euros - I think Alexandra does really deserve it!
+All support and all credits gos to Alexandra. I don't want anything for my work, except an STAR for the repository - thank you.
+So if you want to donate a few Euros - I think Alexandra does really deserve it!
 Buy her a pizzas - here are her donation accounts.
 
 [PayPal](https://paypal.me/forsashatravkina)
