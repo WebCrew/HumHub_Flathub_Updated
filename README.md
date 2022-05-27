@@ -3,9 +3,9 @@ Edited and updated by **WebCrew** / Andreas Holzer - [crazymates.de](https://cra
 
 I have already fixed the most important bugs, there was a lot to do. Please feel free to give me a **STAR** here on my repository. **STARS** provide incentives to continue doing something for the HumHub community. 
 
-A few small problems still have to be patched - but here I ask an **experienced Yii programmer** to help me and the community please, my knowledge is not enough - thank you very much for that.
+A few small problems still have to be patched - but here I ask an **experienced Yii programmer** to help me and the community PLEASE, my knowledge is sadly not enough - thank you very very much for that.
 
-The theme can be used with small restrictions, but the last few bugs still have to be fixed by someone, so please **clone the repository and help**.
+The theme can be used with small restrictions, but the last few bugs still have to be fixed by someone, so please **clone the repository and help PLEASE**.
 
 ## [HumHub](https://github.com/humhub/humhub) Themes FlatHub
 FlatHub - bright and dark flat theme for **HumHub 1.9.0** and and higher.
