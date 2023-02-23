@@ -46,4 +46,4 @@ YandexMoney
 
 ## Developers
 Alexandra Travkina - [fixel.ru](https://fixel.ru)
-**WebCrew** / Andreas Holzer - [crazymates.de](https://crazymates.de)
+**WebCrew** / Andreas Holzer - [net-twin.de](https://net-twin.de)
