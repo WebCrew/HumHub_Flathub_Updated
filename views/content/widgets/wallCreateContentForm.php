@@ -38,86 +38,11 @@ $pickerUrl = ($contentContainer instanceof Space) ? $contentContainer->createUrl
 
 <div class="panel panel-default clearfix">
     <div class="panel-body message-new" id="contentFormBody" style="display:none;" data-action-component="content.form.CreateForm" >
-         <?php $form = ActiveForm::begin(['acknowledge' => true]); ?>
+        <?php $form = ActiveForm::begin(['acknowledge' => true]); ?>
 
-        <div id="notifyUserContainer" class="form-group" style="margin-top: 15px;display:none;">
-            <?= UserPickerField::widget([
-                'id' => 'notifyUserInput',
-                'url' => $pickerUrl,
-                'formName' => 'notifyUserInput',
-                'maxSelection' => 10,
-                'disabledItems' => [Yii::$app->user->guid],
-                'placeholder' => Yii::t('ContentModule.widgets_views_contentForm', 'Add a member to notify'),
-            ]) ?>
-        </div>
+        <?= $wallCreateContentForm->renderActiveForm($form) ?>
 
-        <div id="postTopicContainer" class="form-group" style="margin-top: 15px;display:none;">
-            <?= TopicPicker::widget([
-                    'id' => 'postTopicInput',
-                    'name' => 'postTopicInput',
-                    'contentContainer' => $contentContainer
-            ]); ?>
-        </div>
-
-        <?= Html::hiddenInput("containerGuid", $contentContainer->guid); ?>
-        <?= Html::hiddenInput("containerClass", get_class($contentContainer)); ?>
-
-        <ul id="contentFormError"></ul>
-
-        <div class="contentForm_options">
-            <div class="btn_container row">
-
-                <!-- content sharing -->
-                <div class="space-auto-right-xs col-xs-shrink">
-
-                    <span class="label label-info label-public hidden"><?= Yii::t('ContentModule.widgets_views_contentForm', 'Public'); ?></span>
-                </div>
-                <div class="space-auto-left-xs col-xs-shrink">
-                    <ul class="nav nav-pills preferences">
-                        <li class="dropdown">
-                            <a class="btn btn-default fileinput-button" data-toggle="dropdown" href="#" aria-label="<?= Yii::t('base', 'Toggle post menu'); ?>" aria-haspopup="true">
-                                <i class="fa fa-cogs"></i></a>
-                            <ul class="dropdown-menu pull-right">
-                                <li>
-                                    <?= Link::withAction(Yii::t('ContentModule.widgets_views_contentForm', 'Notify members'), 'notifyUser')->icon('fa-bell')?>
-                                </li>
-                                 <li>
-                                     <?= Link::withAction(Yii::t('ContentModule.base', 'Topics'), 'setTopics')->icon(Yii::$app->getModule('topic')->icon) ?>
-                                </li>
-                                <?php if ($canSwitchVisibility): ?>
-                                    <li>
-                                        <?= Link::withAction(Yii::t('ContentModule.widgets_views_contentForm', 'Make public'), 'changeVisibility')
-                                            ->id('contentForm_visibility_entry')->icon('fa-unlock') ?>
-                                    </li>
-                                <?php endif; ?>
-                            </ul>
-                        </li>
-                    </ul>
-
-                    <?php
-                    $uploadButton = UploadButton::widget([
-                                'id' => 'contentFormFiles',
-                                'progress' => '#contentFormFiles_progress',
-                                'preview' => '#contentFormFiles_preview',
-                                'dropZone' => '#contentFormBody',
-                                'max' => Yii::$app->getModule('content')->maxAttachedFiles
-                    ]);
-                    ?>
-                    <?= FileHandlerButtonDropdown::widget(['primaryButton' => $uploadButton, 'handlers' => $fileHandlers, 'cssButtonClass' => 'btn-default']); ?>
-
-                    <!-- public checkbox -->
-                    <?= Html::checkbox("visibility", "", ['id' => 'contentForm_visibility', 'class' => 'contentForm hidden', 'aria-hidden' => 'true', 'title' => Yii::t('ContentModule.widgets_views_contentForm', 'Content visibility') ]); ?>
-
-                    <?= Button::info($submitButtonText)->action('submit')->id('post_submit_button')->submit() ?>
-                </div>
-            </div>
-
-            <?= UploadProgress::widget(['id' => 'contentFormFiles_progress']) ?>
-            <?= FilePreview::widget(['id' => 'contentFormFiles_preview', 'edit' => true, 'options' => ['style' => 'margin-top:10px;']]); ?>
-
-        </div>
-        <!-- /contentForm_Options -->
-        <?= Html::endForm(); ?>
+        <?php ActiveForm::end(); ?>
     </div>
     <!-- /panel body -->
 </div> <!-- /panel -->
