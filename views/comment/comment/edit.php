@@ -12,7 +12,6 @@ use humhub\modules\content\widgets\richtext\RichTextField;
 /* @var $contentId integer */
 /* @var $comment \humhub\modules\comment\models\Comment */
 
-$submitUrl = Url::to(['/comment/comment/edit', 'id' => $comment->id, 'contentModel' => $comment->object_model, 'contentId' => $comment->object_id]);
 ?>
 
 <div class="content_edit input-container" id="comment_edit_<?= $comment->id; ?>" tabindex="0">
