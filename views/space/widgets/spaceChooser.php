@@ -64,21 +64,7 @@ $this->registerJsConfig('space.chooser', [
         <li class="divider"></li>
         <li>
             <ul class="media-list notLoaded" id="space-menu-spaces">
-                <?php foreach ($memberships as $membership) : ?>
-                    <?= SpaceChooserItem::widget([
-                        'space' => $membership->space,
-                        'updateCount' => $membership->countNewItems(),
-                        'isMember' => true
-                    ]);
-                    ?>
-                <?php endforeach; ?>
-                <?php foreach ($followSpaces as $followSpace) : ?>
-                    <?= SpaceChooserItem::widget([
-                        'space' => $followSpace,
-                        'isFollowing' => true
-                    ]);
-                    ?>
-                <?php endforeach; ?>
+                <?= $renderedItems ?>
             </ul>
         </li>
         <li class="remoteSearch">
