@@ -11,6 +11,7 @@ use humhub\modules\file\widgets\FileHandlerButtonDropdown;
 use humhub\modules\file\widgets\UploadProgress;
 use humhub\widgets\Link;
 use humhub\widgets\Button;
+use humhub\modules\ui\form\widgets\ActiveForm;
 
 /* @var $defaultVisibility integer */
 /* @var $submitUrl string */
@@ -37,9 +38,7 @@ $pickerUrl = ($contentContainer instanceof Space) ? $contentContainer->createUrl
 
 <div class="panel panel-default clearfix">
     <div class="panel-body message-new" id="contentFormBody" style="display:none;" data-action-component="content.form.CreateForm" >
-        <?= Html::beginForm($submitUrl, 'POST'); ?>
-
-        <?= $form; ?>
+         <?php $form = ActiveForm::begin(['acknowledge' => true]); ?>
 
         <div id="notifyUserContainer" class="form-group" style="margin-top: 15px;display:none;">
             <?= UserPickerField::widget([
