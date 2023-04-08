@@ -45,7 +45,7 @@ YandexMoney
 - 41001757647345
 
 ## Developers
-Alexandra Travkina - [fixel.ru](https://fixel.ru)
-**WebCrew** / Andreas Holzer - [net-twin.de](https://net-twin.de)
-**felixhahnweilheim** / [Felix](https://github.com/felixhahnweilheim)
+- **Alexandra Travkina** - [fixel.ru](https://fixel.ru)
+- **WebCrew** / Andreas Holzer - [net-twin.de](https://net-twin.de)
+- **felixhahnweilheim** / Felix - [felixhahn](https://github.com/felixhahnweilheim)
 
