@@ -4,7 +4,6 @@ use humhub\widgets\Button;
 use yii\helpers\Html;
 use yii\helpers\Url;
 
-$commentCount = $this->context->getCommentsCount();
 $hasComments = ($commentCount > 0);
 $commentCountSpan = Html::tag('span', ' ('.$commentCount.')', [
     'class' => 'comment-count',

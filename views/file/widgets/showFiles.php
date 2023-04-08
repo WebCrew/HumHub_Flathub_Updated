@@ -57,7 +57,7 @@ use yii\helpers\Html;
 
     <!-- Show List of all files -->
     <?= FilePreview::widget([
-        'hideImageFileInfo' => $hideImageFileInfo,
+        'excludeMediaFilesPreview' => $excludeMediaFilesPreview,
         'items' => $files,
         'model' => $object,
     ]);?>

@@ -41,6 +41,22 @@
 .wall-entry {
     position: relative;
     
+    .wall-entry-header {
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+        border-bottom: 1px solid @background-color-page;
+        
+        .wall-entry-header-image {
+            display: table-cell;
+            width: 40px;
+            padding-right: 10px;
+        }
+        .media-subheading {
+            .wall-entry-icons {
+                display: inline-block;
+            }
+        }   
+    }
     .content {
         p, a {
             overflow:hidden;

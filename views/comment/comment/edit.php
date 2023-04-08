@@ -1,56 +1,74 @@
 <?php
 
+use humhub\modules\file\handler\BaseFileHandler;
+use humhub\modules\file\widgets\FileHandlerButtonDropdown;
 use humhub\modules\file\widgets\FilePreview;
 use humhub\modules\file\widgets\UploadButton;
+use humhub\modules\ui\form\widgets\ActiveForm;
 use humhub\widgets\Button;
-use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
-use yii\helpers\Url;
 use humhub\modules\content\widgets\richtext\RichTextField;
 
-/* @var $contentModel string */
-/* @var $contentId integer */
+/* @var $this \humhub\modules\ui\view\components\View */
+/* @var $objectModel string */
+/* @var $objectId integer */
 /* @var $comment \humhub\modules\comment\models\Comment */
+/* @var $submitUrl string */
+/* @var $fileHandlers BaseFileHandler[] */
 
-$submitUrl = Url::to(['/comment/comment/edit', 'id' => $comment->id, 'contentModel' => $comment->object_model, 'contentId' => $comment->object_id]);
+/** @var \humhub\modules\content\Module $contentModule */
+$contentModule = Yii::$app->getModule('content');
+
 ?>
-
 <div class="content_edit input-container" id="comment_edit_<?= $comment->id; ?>" tabindex="0">
-    <?php $form = ActiveForm::begin(); ?>
-        <?= Html::hiddenInput('contentModel', $contentModel); ?>
-        <?= Html::hiddenInput('contentId', $contentId); ?>
+    <?php $form = ActiveForm::begin(['acknowledge' => true]); ?>
+    <?= Html::hiddenInput('objectModel', $objectModel); ?>
+    <?= Html::hiddenInput('objectId', $objectId); ?>
 
-        <div class="comment-create-input-group">
-            <?= $form->field($comment, 'message')->widget(RichTextField::class, [
-                'id' => 'comment_input_'.$comment->id,
-                'layout' => RichTextField::LAYOUT_INLINE,
-                'placeholder' => Yii::t('CommentModule.views_edit', 'Edit your comment...'),
-                'focus' => true
-            ])->label(false) ?>
+    <div class="comment-create-input-group">
+        <?= $form->field($comment, 'message')->widget(RichTextField::class, [
+            'id' => 'comment_input_' . $comment->id,
+            'layout' => RichTextField::LAYOUT_INLINE,
+            'pluginOptions' => ['maxHeight' => '300px'],
+            'placeholder' => Yii::t('CommentModule.base', 'Edit your comment...'),
+            'focus' => true,
+            'events' => [
+                'scroll-active' => 'comment.scrollActive',
+                'scroll-inactive' => 'comment.scrollInactive'
+            ]
+        ])->label(false) ?>
 
-            <div class="comment-buttons">
+        <div class="comment-buttons"><?php
+            $uploadButton = UploadButton::widget([
+                'id' => 'comment_upload_' . $comment->id,
+                'model' => $comment,
+                'tooltip' => Yii::t('ContentModule.base', 'Attach Files'),
+                'dropZone' => '#comment_' . $comment->id,
+                'preview' => '#comment_upload_preview_' . $comment->id,
+                'progress' => '#comment_upload_progress_' . $comment->id,
+                'max' => $contentModule->maxAttachedFiles,
+                'cssButtonClass' => 'btn-sm btn-info',
+            ]);
+            echo FileHandlerButtonDropdown::widget([
+                'primaryButton' => $uploadButton,
+                'handlers' => $fileHandlers,
+                'cssButtonClass' => 'btn-info btn-sm',
+                'pullRight' => true,
+            ]);
+            echo Button::info()
+                ->icon('send')
+                ->cssClass('btn-comment-submit')->sm()
+                ->action('editSubmit', $submitUrl)->submit();
+        ?></div>
+    </div>
 
-                <?=  UploadButton::widget([
-                    'id' => 'comment_upload_' . $comment->id,
-                    'model' => $comment,
-                    'dropZone' => '#comment_'.$comment->id,
-                    'preview' => '#comment_upload_preview_'.$comment->id,
-                    'progress' => '#comment_upload_progress_'.$comment->id,
-                    'max' => Yii::$app->getModule('content')->maxAttachedFiles
-                ]); ?>
+    <div id="comment_upload_progress_<?= $comment->id ?>" style="display:none; margin:10px 0;"></div>
 
-                <?= Button::defaultType(Yii::t('base', 'Save'))->cssClass('btn-comment-submit')->action('editSubmit', $submitUrl)->submit()->sm() ?>
-
-            </div>
-        </div>
-
-        <div id="comment_upload_progress_<?= $comment->id ?>" style="display:none; margin:10px 0;"></div>
-
-        <?= FilePreview::widget([
-            'id' => 'comment_upload_preview_'.$comment->id,
-            'options' => ['style' => 'margin-top:10px'],
-            'model' => $comment,
-            'edit' => true
-        ]); ?>
+    <?= FilePreview::widget([
+        'id' => 'comment_upload_preview_' . $comment->id,
+        'options' => ['style' => 'margin-top:10px'],
+        'model' => $comment,
+        'edit' => true
+    ]); ?>
     <?php ActiveForm::end(); ?>
 </div>
