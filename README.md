@@ -1,5 +1,5 @@
 # Updated FlatHub V2 Theme from Alexandra Travkina
-Edited and updated by **WebCrew** / Andreas Holzer - [phpSocial-net.de](https://phpsocial-net.de)
+Edited and updated by **WebCrew** / Andreas Holzer - [net-twin.de](https://net-twin.de/net/NetTwin)
 
 Me and Felix had already fixed the most important bugs, there was a lot to do. Please feel free to give us a **STAR** here on my repository. **STARS** provide incentives to continue doing something for the HumHub community. 
 
